@@ -28,14 +28,14 @@
 
             $sql = "SELECT id_paciente WHERE nombre = '{$this->cedula}'";
             if ($this->conexion->consultaRetorno($sql)->num_rows > 0){
-                $msj ="El nombre de la Carrera que introdujo ya existe, por tanto no se introdujo";
+                $msj ="El Paciente que introdujo ya existe, por tanto no se introdujo";
             }else{
                 $sql = "INSERT INTO paciente VALUES('','{$this->nombre}','{$this->apellido}','{$this->cedula}','{$this->diagnostico}')";
                 if($this->conexion->consultaSimple($sql)){
                     $msj = "Paciente agregado Satisfactoriamente!";
                     $alert = "success";
                 }else{
-                    $msj = "No se pudo agregar su Carrera";
+                    $msj = "No se pudo agregar el paciente";
                 }
                 if(empty($alert)){
                     $datos['alert'] = "danger";
@@ -52,12 +52,15 @@
 
         }
         public function edit(){
-            $sql = "DELETE FROM paciente WHERE id_carrera = '{$this->id}'";
+            
+        }
+        public function delete(){
+            $sql = "DELETE FROM paciente WHERE id = '{$this->id}'";
 				if($this->conexion->consultaSimple($sql)){
-					$msj = "Carrera Eliminado satisfactoriamente";
+					$msj = "Paciente Eliminado satisfactoriamente";
 					$alert = "success";
 				}else{
-					$msj = "No se pudo completar la eliminación del Carrera";
+					$msj = "No se elimino el Paciente";
 					$alert = "danger";
 				}
 					if(isset($msj)){
@@ -66,9 +69,6 @@
 					$datos['msj'] = $msj;
 					}
 					return $datos;
-        }
-        public function delete(){
-            $sql = "";
         }
 
     }
