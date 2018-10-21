@@ -5,10 +5,7 @@
 
 require_once "Config/Autoload.php";
 Config\Autoload::run();
-use Models\Paciente as Paciente;
+Config\Enrutador::run(new Config\Request());
 
-$paciente = new Paciente();
-$hola = $paciente->add();
-echo $hola;
 
 ?>
