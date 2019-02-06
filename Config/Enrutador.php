@@ -1,4 +1,4 @@
-<?php namespace Config
+<?php namespace Config;
 
 class Enrutador{
 	
@@ -31,4 +31,6 @@ class Enrutador{
                 $datos = call_user_func_array(array($controlador, $metodo), $argumento);
             }
         }
+    }
+}
 ?>
